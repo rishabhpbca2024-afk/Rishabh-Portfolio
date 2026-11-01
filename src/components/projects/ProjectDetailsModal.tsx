@@ -3,6 +3,8 @@ import {
   X,
   CheckCircle2,
   Layers,
+  Download,
+  Smartphone,
 } from 'lucide-react';
 import type { ProjectItem } from '../../types/portfolio';
 import { GithubIcon } from '../common/Icons';
@@ -132,19 +134,57 @@ export const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
               ))}
             </div>
           </div>
+
+          {/* Android APK Download Option if present */}
+          {project.downloadUrl && (
+            <div className="p-4 rounded-xl bg-emerald-950/30 border border-emerald-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div className="flex items-center gap-3">
+                <div className="p-2.5 rounded-lg bg-emerald-900/50 border border-emerald-500/40 text-emerald-400 shrink-0">
+                  <Smartphone className="w-5 h-5" />
+                </div>
+                <div>
+                  <h5 className="text-sm font-semibold text-white">Android Application (.apk)</h5>
+                  <p className="text-xs text-slate-400">
+                    Offline-first installable APK package • {project.apkSize || '14.8 MB'}
+                  </p>
+                </div>
+              </div>
+              <a
+                href={project.downloadUrl}
+                download
+                className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs shadow-md shadow-emerald-950/40 transition-all shrink-0"
+              >
+                <Download className="w-4 h-4" />
+                <span>Download APK</span>
+              </a>
+            </div>
+          )}
         </div>
 
         {/* Modal Footer Actions */}
         <div className="pt-4 mt-6 border-t border-slate-800 flex flex-wrap items-center justify-between gap-3">
-          <a
-            href={project.githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-xs tracking-wide shadow-md shadow-cyan-950/40 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
-          >
-            <GithubIcon className="w-4 h-4" />
-            <span>View Source Code on GitHub</span>
-          </a>
+          <div className="flex flex-wrap items-center gap-2">
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-xs tracking-wide shadow-md shadow-cyan-950/40 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+            >
+              <GithubIcon className="w-4 h-4" />
+              <span>View Source Code on GitHub</span>
+            </a>
+
+            {project.downloadUrl && (
+              <a
+                href={project.downloadUrl}
+                download
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-950/80 hover:bg-emerald-900 text-emerald-300 hover:text-white border border-emerald-500/40 font-bold text-xs tracking-wide transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400"
+              >
+                <Download className="w-4 h-4 text-emerald-400" />
+                <span>Download .APK ({project.apkSize || '14.8 MB'})</span>
+              </a>
+            )}
+          </div>
 
           <button
             onClick={onClose}

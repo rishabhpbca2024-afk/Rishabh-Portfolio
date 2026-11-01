@@ -4,6 +4,7 @@ import { projects } from '../../data/portfolioData';
 import { ProjectCard } from './ProjectCard';
 import { ProjectDetailsModal } from './ProjectDetailsModal';
 import type { ProjectCategory, ProjectItem } from '../../types/portfolio';
+import { Card3DTilt } from '../common/Card3DTilt';
 
 export const ProjectsSection: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<ProjectCategory>('all');
@@ -17,28 +18,28 @@ export const ProjectsSection: React.FC = () => {
       count: projects.filter((p) => p.category === 'mern').length,
     },
     {
-      id: 'systems',
-      label: 'Backend & Systems',
-      count: projects.filter((p) => p.category === 'systems').length,
-    },
-    {
       id: 'mobile',
       label: 'Mobile & SQLite',
       count: projects.filter((p) => p.category === 'mobile').length,
     },
-  ];
+    {
+      id: 'systems',
+      label: 'Backend & Systems',
+      count: projects.filter((p) => p.category === 'systems').length,
+    },
+  ].filter((c) => c.id === 'all' || c.count > 0);
 
   const filteredProjects = projects.filter((p) =>
     activeCategory === 'all' ? true : p.category === activeCategory
   );
 
   return (
-    <section id="projects" className="py-16 sm:py-24 relative bg-[#090d16] border-t border-slate-800/80">
+    <section id="projects" className="py-20 sm:py-28 relative bg-[#090d16] border-t border-slate-800/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           badge="Featured Projects"
           title="Engineered Systems & Applications"
-          subtitle="Production-oriented projects built with clean architectures, database models, and verified public repositories."
+          subtitle="Production-grade projects built with clean architectures, robust database models, and verified public repositories."
         />
 
         {/* Minimalist Filter Pills */}
@@ -63,14 +64,15 @@ export const ProjectsSection: React.FC = () => {
           ))}
         </div>
 
-        {/* Projects Grid */}
+        {/* Projects Grid with 3D Tilt */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
           {filteredProjects.map((project) => (
-            <ProjectCard
-              key={project.id}
-              project={project}
-              onSelect={setSelectedProject}
-            />
+            <Card3DTilt key={project.id} maxTilt={7} className="h-full">
+              <ProjectCard
+                project={project}
+                onSelect={setSelectedProject}
+              />
+            </Card3DTilt>
           ))}
         </div>
 

@@ -23,11 +23,11 @@ export const Footer: React.FC = () => {
               </span>
               <span className="text-slate-500">•</span>
               <span className="font-mono text-cyan-400 text-xs">
-                Full Stack Developer
+                Software Engineer
               </span>
             </div>
             <p className="text-slate-400 text-[11px] max-w-sm mt-1">
-              BCA Student at Sant Singaji Institute of Science and Management, Sandalpur (near Khategaon). Building practical full-stack web applications.
+              BCA Student at Sant Singaji Institute of Science and Management, Sandalpur (near Khategaon). Building practical software systems across frontend, backend, and database architectures.
             </p>
           </div>
 
@@ -73,7 +73,7 @@ export const Footer: React.FC = () => {
         {/* Sub-footer */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-400">
           <div>
-            <span className="font-medium text-slate-300">Rishabh Pal</span> — Full Stack Developer
+            <span className="font-medium text-slate-300">Rishabh Pal</span> — Software Engineer
           </div>
 
           <div className="flex items-center gap-5">

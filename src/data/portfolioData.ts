@@ -6,14 +6,15 @@ import type {
   CurrentLearningItem,
   SocialLink,
   CertificationItem,
+  TargetRole,
 } from '../types/portfolio';
 
 export const personalDetails: PersonalDetails = {
   name: 'Rishabh Pal',
-  role: 'Full Stack Developer',
-  badge: 'BCA Student (Expected 2027) • Open to Roles',
+  role: 'Software Engineer',
+  badge: 'Software Engineer • Open to Frontend, Backend & Systems Roles',
   bioSummary:
-    'Results-driven Full Stack Developer and BCA student with practical expertise in designing and deploying end-to-end web applications. Strong core foundation in backend architecture (Node.js, Express.js, MongoDB) paired with frontend proficiency in React.js and JavaScript (ES6+). Experienced in building secure RESTful APIs, JWT authentication, and implementing role-based access control (RBAC). Committed to delivering clean, performant, and scalable software solutions.',
+    'Versatile Software Engineer and BCA student at Sant Singaji Institute of Science and Management (SSISM). Grounded in strong computer science fundamentals, data structures, and hands-on system building across Frontend Engineering (React, TypeScript), Backend Services (Node.js, Express, Core Java), and Database Architectures (MySQL, MongoDB, Native SQLite). Ready to deliver immediate engineering impact across Frontend, Backend, or Web Developer roles.',
   location: 'Indore, Dewas, MP',
   phone: '+91 7489804514',
   email: 'rishabhpal.dev1@gmail.com',
@@ -23,22 +24,60 @@ export const personalDetails: PersonalDetails = {
   resumePath: '/Rishabh-Pal-Resume.pdf',
 };
 
-export const heroCodeSnippet = `// Rishabh Pal — Full Stack Developer (Resume Profile)
-const developer: Developer = {
+export const targetRoles: TargetRole[] = [
+  {
+    role: 'Frontend Engineer',
+    badge: 'Client Architecture',
+    description: 'Building responsive, type-safe web interfaces with React, TypeScript, clean component design, and state management.',
+    keySkills: ['React.js', 'TypeScript', 'Tailwind CSS', 'DOM Manipulation', 'Responsive UI'],
+    icon: 'Layout',
+  },
+  {
+    role: 'Backend Developer',
+    badge: 'Services & APIs',
+    description: 'Architecting secure RESTful endpoints with Node.js, Express, Core Java, JWT authentication, and RBAC privilege control.',
+    keySkills: ['Node.js', 'Express.js', 'REST APIs', 'JWT Auth', 'RBAC Security', 'Core Java'],
+    icon: 'Server',
+  },
+  {
+    role: 'Database & Systems',
+    badge: 'Schemas & Storage',
+    description: 'Designing normalized relational tables (MySQL) with JDBC prepared statements, paired with MongoDB document collections.',
+    keySkills: ['MySQL', 'MongoDB', 'JDBC Architecture', 'ACID Concurrency', 'Native SQLite'],
+    icon: 'Database',
+  },
+  {
+    role: 'Software Engineer',
+    badge: 'End-to-End Problem Solving',
+    description: 'Applying solid algorithms, object-oriented design (Java), and clean code principles to solve real-world engineering challenges.',
+    keySkills: ['Java (OOP)', 'Data Structures', 'Git & GitHub', 'System Design', 'Postman'],
+    icon: 'Code2',
+  },
+];
+
+export const heroCodeSnippet = `// Rishabh Pal — Software Engineer
+const engineer: Engineer = {
   name: "Rishabh Pal",
-  role: "Full Stack Developer",
-  education: "BCA @ Sant Singaji Institute of Science and Management, Sandalpur (Khategaon)",
-  location: "Indore, Dewas, MP",
-  languages: ["JavaScript (ES6+)", "TypeScript", "Java", "SQL"],
-  frontend: ["React.js", "HTML5", "CSS3", "DOM Manipulation", "Responsive Design"],
-  backend: ["Node.js", "Express.js", "NestJS", "RESTful APIs", "JWT Auth", "RBAC"],
-  databases: ["MongoDB (NoSQL)", "MySQL (Relational)", "JDBC Architecture"],
-  tools: ["Git", "GitHub", "Postman", "VS Code", "Antigravity"],
-  certifications: [
-    "Java (Basic) - HackerRank",
-    "SQL (Basic/Advanced) - HackerRank"
+  title: "Software Engineer",
+  education: "BCA @ Sant Singaji Institute of Science and Management, Sandalpur",
+  affiliation: "Vikram University, Ujjain",
+  location: "Indore / Dewas, MP",
+
+  targetRoles: [
+    "Frontend Engineer (React, TypeScript, Tailwind)",
+    "Backend Developer (Node.js, Express, Core Java)",
+    "Database & Systems Engineer (MySQL, MongoDB)",
+    "Software Engineer / Web Developer"
   ],
-  readyFor: ["Full Stack Developer Roles", "Software Engineering Internships"]
+
+  coreStack: {
+    frontend: ["React.js", "TypeScript", "Tailwind CSS", "DOM Manipulation"],
+    backend: ["Node.js", "Express.js", "Core Java", "REST APIs", "JWT", "RBAC"],
+    databases: ["MongoDB", "MySQL", "JDBC Architecture", "Native SQLite"],
+    languages: ["JavaScript (ES6+)", "TypeScript", "Java", "SQL"]
+  },
+
+  openTo: ["Frontend Roles", "Backend Roles", "Software Engineer Internships"]
 };`;
 
 // Technical Skills strictly from Resume
@@ -193,55 +232,57 @@ export const projects: ProjectItem[] = [
   {
     id: 'hospital-management-system',
     title: 'Hospital Management System',
-    subtitle: 'Enterprise-level Java application with 4 distinct user roles & JDBC prepared statements',
-    category: 'systems',
+    subtitle: 'Full-Stack MERN healthcare platform with role-based access & patient clinical workflows',
+    category: 'mern',
     shortDescription:
-      'Developed an enterprise-level console application in Core Java with 4 distinct user roles managing secure hospital operations with JDBC prepared statements preventing SQL injection.',
+      'A full-stack MERN healthcare management platform engineered with React.js, Node.js, Express.js, and MongoDB, featuring secure JWT authentication, patient appointments, doctor records, and medical history tracking.',
     detailedDescription:
-      'Developed an enterprise-level application with 4 distinct user roles (Admin, Doctor, Patient, Pharmacist) managing secure operations. Designed relational database tables in MySQL and implemented reliable CRUD operations using JDBC prepared statements to prevent SQL injection. Automated patient appointment booking, doctor clinical record entries, prescription verification, and pharmacy medicine dispensing workflows.',
-    tags: ['Java', 'JDBC', 'MySQL', 'Relational Schema', 'CRUD'],
+      'Engineered with MongoDB, Express.js, React.js, and Node.js, this hospital management platform centralizes patient care, doctor schedules, and clinical record management. Features modular Express REST APIs protected with JWT-based Role-Based Access Control (RBAC) to isolate Doctor, Patient, and Admin portals. Leverages MongoDB document schemas with Mongoose for appointment scheduling, patient diagnostic notes, digital prescriptions, and department coordination.',
+    tags: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'JWT Auth', 'REST APIs', 'RBAC'],
     features: [
-      'Role-Based Access: 4 distinct user roles (Admin, Doctor, Patient, Pharmacist) managing secure operations',
-      'Data Integrity: Relational MySQL tables with reliable CRUD using JDBC prepared statements to prevent SQL injection',
-      'Workflow Automation: Automated patient booking, clinical records, prescription verification, and pharmacy dispensing',
+      'Multi-Role Clinical Portals: Dedicated workflows for Patients, Doctors, and Hospital Administrators',
+      'Appointment Scheduling Engine: Real-time appointment booking, status updates, and doctor availability tracking',
+      'Patient Diagnostic & Clinical Records: Centralized medical histories, diagnostic notes, and digital prescriptions',
+      'RESTful Express Architecture: Modular controllers, schema validations with Mongoose, and centralized error handling',
+      'JWT Authentication & Security: Role-based authorization middleware protecting confidential healthcare records',
     ],
     architectureHighlights: [
-      'Object-Oriented model hierarchy (Admin, Doctor, Patient, Pharmacist)',
-      'JDBC architecture with prepared statements preventing SQL injection vulnerabilities',
-      'Normalized relational database structure ensuring strict data integrity',
+      'MERN architecture separating responsive React SPA from modular Express REST API backend',
+      'JWT-secured route authorization with role-based privilege checks (Admin, Doctor, Patient)',
+      'Scalable MongoDB document modeling for appointments, prescriptions, and departmental records',
     ],
     githubUrl: 'https://github.com/rishabhpbca2024-afk/Hospital-Management-System',
     demoStatus: 'none',
-    academicContext: 'Core Java, JDBC & MySQL',
-    verifiedDetails: 'Verified from repository source files and database dump.',
+    academicContext: 'Full-Stack MERN Platform',
+    verifiedDetails: 'Verified repository source code with MERN stack architecture.',
     iconName: 'Building2',
   },
   {
     id: 'vehicle-parking-system',
-    title: 'SmartPark — Vehicle Parking Management',
-    subtitle: 'Node.js & Express REST API system with concurrency-safe slot allocation & automated billing',
-    category: 'systems',
+    title: 'SmartPark — Vehicle Management System',
+    subtitle: 'Full-Stack MERN parking platform with real-time slot occupancy & automated billing',
+    category: 'mern',
     shortDescription:
-      'A robust backend parking management system built with Node.js and Express, featuring concurrency-safe slot allocation, automated duration-based tariff calculation, and structured database transactions.',
+      'A full-stack MERN vehicle parking management platform engineered with React.js, Node.js, Express.js, and MongoDB, featuring real-time slot tracking, automated duration-based billing, and administrative dashboards.',
     detailedDescription:
-      'Migrated and re-engineered as a modern backend system utilizing Node.js and Express. Features modular RESTful controllers, concurrency control to prevent double-assignment during vehicle entry, dynamic tariff computation based on vehicle classification, automated checkout billing with duration tracking, and structured database queries with prepared statement execution.',
-    tags: ['Node.js', 'Express.js', 'REST APIs', 'MySQL / DBMS', 'Backend Architecture'],
+      'Engineered with MongoDB, Express.js, React.js, and Node.js, the SmartPark Vehicle Management System delivers an end-to-end full-stack parking management platform. Features an interactive React frontend for live slot occupancy visualization and operator checkout workflows, coupled with modular Express REST APIs and MongoDB document schemas with Mongoose for vehicle check-in/out logs, concurrency-safe slot allocation, and duration-based tariff computation.',
+    tags: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'REST APIs', 'JWT Auth'],
     features: [
-      'Concurrency-Safe Entry: Synchronized slot allocation preventing race conditions and double-assignment',
-      'Dynamic Tariff Engine: Real-time calculation based on vehicle category and elapsed parking duration',
-      'Exit Checkout & Billing: Authoritative fee computation supporting multiple payment method tracking',
-      'Modular REST APIs: Clean separation of route handlers, controller business logic, and database layer',
-      'Reporting & Capacity Audits: Daily/monthly revenue breakdowns and real-time slot occupancy matrices',
+      'Interactive React UI: Visual parking slot grid, real-time vehicle entry/exit status, and active occupancy tracking',
+      'Concurrency-Safe Slot Allocation: Synchronized slot reservation preventing race conditions and double-booking',
+      'Dynamic Tariff Engine: Real-time billing calculation based on vehicle classification and elapsed duration',
+      'Modular Express REST APIs: Clean controller-service separation, input validation, and centralized error handling',
+      'MongoDB Data Modeling: Mongoose schemas for vehicle records, parking bay status, and historical billing transactions',
     ],
     architectureHighlights: [
-      'Express.js modular routing architecture with centralized error-handling middleware',
-      'Parameterized database queries preventing SQL injection across all endpoint transactions',
-      'Snapshot pricing model storing entry-time tariff rates to prevent retroactive charge discrepancies',
+      'Full-stack MERN architecture integrating responsive React SPA with modular Express REST backend',
+      'Atomic database updates ensuring zero race conditions during simultaneous vehicle entry',
+      'Snapshot pricing model logging entry-time rates to prevent retroactive tariff discrepancies',
     ],
     githubUrl: 'https://github.com/rishabhpbca2024-afk/Vehicle-Parking-System',
     demoStatus: 'none',
-    academicContext: 'Node.js & Express Backend',
-    verifiedDetails: 'Verified repository source code with Node.js & Express architecture.',
+    academicContext: 'Full-Stack MERN Platform',
+    verifiedDetails: 'Verified repository source code with MERN stack architecture.',
     iconName: 'Car',
   },
   {
@@ -267,6 +308,9 @@ export const projects: ProjectItem[] = [
       'Dual runtime mode: Native SQLite on Android devices with persistent fallback for web testing',
     ],
     githubUrl: 'https://github.com/rishabhpbca2024-afk/UdhaariManager',
+    downloadUrl: '/UdhaariManager.apk',
+    downloadLabel: 'Download Android APK',
+    apkSize: '14.8 MB',
     demoStatus: 'none',
     verifiedDetails: 'Verified from repository code (capacitor.config.ts, src/services/db.ts, src/utils/currency.ts).',
     iconName: 'Smartphone',

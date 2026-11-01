@@ -40,6 +40,9 @@ export interface ProjectItem {
   verifiedDetails: string;
   academicContext?: string;
   iconName: string;
+  downloadUrl?: string;
+  downloadLabel?: string;
+  apkSize?: string;
 }
 
 export interface EducationItem {
@@ -83,4 +86,12 @@ export interface PersonalDetails {
   linkedinUrl: string;
   resumeFileName: string;
   resumePath: string;
+}
+
+export interface TargetRole {
+  role: string;
+  badge: string;
+  description: string;
+  keySkills: string[];
+  icon: string;
 }

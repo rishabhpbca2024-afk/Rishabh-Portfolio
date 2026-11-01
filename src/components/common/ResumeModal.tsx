@@ -84,7 +84,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose, onNot
               <span>Recruiter-Focused Profile Overview</span>
             </div>
             <ul className="text-xs text-slate-300 space-y-1.5 pl-6 list-disc">
-              <li>Role: <span className="text-slate-100 font-medium">Full Stack Developer</span></li>
+              <li>Role: <span className="text-slate-100 font-medium">Software Engineer (Frontend • Backend • Systems)</span></li>
               <li>Education: <span className="text-slate-100 font-medium">BCA @ Sant Singaji Institute, Sandalpur (Expected 2027 • CGPA: 7.65)</span></li>
               <li>Core Stack: <span className="text-cyan-300 font-mono">React.js • Node.js • Express.js • MongoDB • Java • SQL</span></li>
               <li>Location: <span className="text-slate-100">Indore, Dewas, MP</span></li>

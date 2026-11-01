@@ -81,10 +81,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
           <div className="flex flex-col">
             <span className="font-bold text-white text-base tracking-tight flex items-center gap-1.5">
               Rishabh Pal
-              <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 ring-2 ring-emerald-400/20 animate-pulse" title="Available for Roles" />
+              <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 ring-2 ring-emerald-400/20" title="Available for Roles" />
             </span>
-            <span className="text-[11px] font-mono text-cyan-400/90 tracking-wide">
-              &lt;FullStack /&gt;
+            <span className="text-[11px] font-mono text-slate-400 tracking-wide">
+              Software Engineer
             </span>
           </div>
         </a>

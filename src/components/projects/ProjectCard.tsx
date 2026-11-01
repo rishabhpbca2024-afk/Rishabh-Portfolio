@@ -8,6 +8,7 @@ import {
   Car,
   Smartphone,
   ChevronRight,
+  Download,
 } from 'lucide-react';
 import type { ProjectItem } from '../../types/portfolio';
 import { GithubIcon } from '../common/Icons';
@@ -105,20 +106,58 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onSelect }) =
             ))}
           </div>
         </div>
+
+        {/* Direct APK Download Banner if available */}
+        {project.downloadUrl && (
+          <div className="p-3 rounded-xl bg-emerald-950/40 border border-emerald-500/30 flex items-center justify-between gap-2 mt-2">
+            <div className="flex items-center gap-2.5 min-w-0">
+              <span className="p-1.5 rounded-lg bg-emerald-900/60 text-emerald-400 shrink-0">
+                <Download className="w-4 h-4" />
+              </span>
+              <div className="min-w-0">
+                <p className="text-xs font-semibold text-emerald-300 truncate">Android APK Ready</p>
+                <p className="text-[10px] text-emerald-400/80 font-mono">v1.0 • Direct Install ({project.apkSize || '14.8 MB'})</p>
+              </div>
+            </div>
+            <a
+              href={project.downloadUrl}
+              download
+              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs shrink-0 transition-colors shadow-sm"
+              aria-label={`Download ${project.title} APK`}
+            >
+              <Download className="w-3.5 h-3.5" />
+              <span>Get APK</span>
+            </a>
+          </div>
+        )}
       </div>
 
       {/* Card Action Footer */}
-      <div className="p-4 sm:p-5 bg-[#0a0e17] border-t border-slate-800/80 flex items-center justify-between gap-3">
-        <a
-          href={project.githubUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={`View ${project.title} on GitHub`}
-          className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 hover:text-white border border-slate-800 text-xs font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
-        >
-          <GithubIcon className="w-3.5 h-3.5 text-cyan-400" />
-          <span>Repository</span>
-        </a>
+      <div className="p-4 sm:p-5 bg-[#0a0e17] border-t border-slate-800/80 flex items-center justify-between gap-2.5">
+        <div className="flex items-center gap-2">
+          <a
+            href={project.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`View ${project.title} on GitHub`}
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 hover:text-white border border-slate-800 text-xs font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+          >
+            <GithubIcon className="w-3.5 h-3.5 text-cyan-400" />
+            <span>Repository</span>
+          </a>
+
+          {project.downloadUrl && (
+            <a
+              href={project.downloadUrl}
+              download
+              aria-label={`Download ${project.title} APK`}
+              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-emerald-950/60 hover:bg-emerald-900/80 text-emerald-300 hover:text-white border border-emerald-500/40 text-xs font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400"
+            >
+              <Download className="w-3.5 h-3.5 text-emerald-400" />
+              <span>APK</span>
+            </a>
+          )}
+        </div>
 
         <button
           onClick={() => onSelect(project)}
