@@ -5,6 +5,7 @@ import {
   Layers,
   Download,
   Smartphone,
+  ExternalLink,
 } from 'lucide-react';
 import type { ProjectItem } from '../../types/portfolio';
 import { GithubIcon } from '../common/Icons';
@@ -52,11 +53,23 @@ export const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
           {/* Header */}
           <div className="flex items-start justify-between pb-4 border-b border-slate-800">
             <div>
-              <div className="flex items-center gap-2 mb-2">
+              <div className="flex flex-wrap items-center gap-2 mb-2">
                 <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-mono bg-cyan-950/80 text-cyan-300 border border-cyan-500/30">
                   <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400" />
                   <span>Verified GitHub Repository</span>
                 </span>
+                {project.demoStatus === 'live' && project.demoUrl && (
+                  <a
+                    href={project.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-mono bg-emerald-950/80 text-emerald-300 border border-emerald-500/40 hover:bg-emerald-900/60 transition-colors"
+                  >
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                    <span>Live Web App</span>
+                    <ExternalLink className="w-3 h-3 ml-0.5" />
+                  </a>
+                )}
               </div>
               <h3 id="project-modal-title" className="text-xl sm:text-2xl font-bold text-white">
                 {project.title}
@@ -135,6 +148,38 @@ export const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
             </div>
           </div>
 
+          {/* Live Web Application Card if active */}
+          {project.demoStatus === 'live' && project.demoUrl && (
+            <div className="p-4 rounded-xl bg-gradient-to-r from-cyan-950/40 to-blue-950/40 border border-cyan-500/40 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div className="flex items-center gap-3 min-w-0">
+                <div className="p-2.5 rounded-lg bg-cyan-900/50 border border-cyan-500/40 text-cyan-400 shrink-0">
+                  <ExternalLink className="w-5 h-5" />
+                </div>
+                <div className="min-w-0">
+                  <h5 className="text-sm font-semibold text-white flex items-center gap-2">
+                    <span>Live Deployed Web Application</span>
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-mono bg-emerald-950 text-emerald-300 border border-emerald-500/40">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                      Online
+                    </span>
+                  </h5>
+                  <p className="text-xs text-slate-400 font-mono truncate max-w-sm mt-0.5">
+                    {project.demoUrl}
+                  </p>
+                </div>
+              </div>
+              <a
+                href={project.demoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-xs shadow-md shadow-cyan-950/40 transition-all shrink-0"
+              >
+                <span>Launch Live App</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+            </div>
+          )}
+
           {/* Android APK Download Option if present */}
           {project.downloadUrl && (
             <div className="p-4 rounded-xl bg-emerald-950/30 border border-emerald-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
@@ -164,14 +209,26 @@ export const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
         {/* Modal Footer Actions */}
         <div className="pt-4 mt-6 border-t border-slate-800 flex flex-wrap items-center justify-between gap-3">
           <div className="flex flex-wrap items-center gap-2">
+            {project.demoStatus === 'live' && project.demoUrl && (
+              <a
+                href={project.demoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-xs tracking-wide shadow-md shadow-cyan-950/40 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+              >
+                <ExternalLink className="w-4 h-4" />
+                <span>Open Live Application</span>
+              </a>
+            )}
+
             <a
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-xs tracking-wide shadow-md shadow-cyan-950/40 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+              className="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 hover:text-white border border-slate-700/80 font-bold text-xs tracking-wide transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
             >
-              <GithubIcon className="w-4 h-4" />
-              <span>View Source Code on GitHub</span>
+              <GithubIcon className="w-4 h-4 text-cyan-400" />
+              <span>GitHub Repository</span>
             </a>
 
             {project.downloadUrl && (

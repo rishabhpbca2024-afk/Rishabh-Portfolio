@@ -9,6 +9,7 @@ import {
   Smartphone,
   ChevronRight,
   Download,
+  ExternalLink,
 } from 'lucide-react';
 import type { ProjectItem } from '../../types/portfolio';
 import { GithubIcon } from '../common/Icons';
@@ -54,12 +55,19 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onSelect }) =
             </div>
           </div>
 
-          {/* Verification Badge */}
+          {/* Status Badges */}
           <div className="flex items-center gap-1.5">
-            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-emerald-950/60 text-emerald-400 border border-emerald-500/30">
-              <CheckCircle2 className="w-3 h-3" />
-              Verified
-            </span>
+            {project.demoStatus === 'live' && project.demoUrl ? (
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-emerald-950/80 text-emerald-300 border border-emerald-500/40">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                Live Demo
+              </span>
+            ) : (
+              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-emerald-950/60 text-emerald-400 border border-emerald-500/30">
+                <CheckCircle2 className="w-3 h-3" />
+                Verified
+              </span>
+            )}
           </div>
         </div>
 
@@ -133,8 +141,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onSelect }) =
       </div>
 
       {/* Card Action Footer */}
-      <div className="p-4 sm:p-5 bg-[#0a0e17] border-t border-slate-800/80 flex items-center justify-between gap-2.5">
-        <div className="flex items-center gap-2">
+      <div className="p-4 sm:p-5 bg-[#0a0e17] border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-2.5">
+        <div className="flex flex-wrap items-center gap-2">
           <a
             href={project.githubUrl}
             target="_blank"
@@ -145,6 +153,19 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onSelect }) =
             <GithubIcon className="w-3.5 h-3.5 text-cyan-400" />
             <span>Repository</span>
           </a>
+
+          {project.demoStatus === 'live' && project.demoUrl && (
+            <a
+              href={project.demoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Open live website for ${project.title}`}
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-cyan-950/70 hover:bg-cyan-900/80 text-cyan-300 hover:text-white border border-cyan-500/40 text-xs font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+            >
+              <ExternalLink className="w-3.5 h-3.5 text-cyan-400" />
+              <span>Live Demo</span>
+            </a>
+          )}
 
           {project.downloadUrl && (
             <a
@@ -161,7 +182,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onSelect }) =
 
         <button
           onClick={() => onSelect(project)}
-          className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 text-xs font-bold shadow-md shadow-cyan-950/40 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+          className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 text-xs font-bold shadow-md shadow-cyan-950/40 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 ml-auto"
         >
           <span>Deep Dive</span>
           <ChevronRight className="w-3.5 h-3.5" />
